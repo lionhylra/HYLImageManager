@@ -80,4 +80,5 @@ This is a class used to handle concurrent downloading tasks and download file to
 Call <code>- (void)retrievingDownloadingTasks;</code> in UIApplicationDelegate when app become active to ensure the manager keep tracks of all ongoing download tasks. Use <code>- (NSURLSessionDownloadTask *)downloadingTaskWithURL:(NSString *)urlString;</code> to check if a task is ongoing.
 
 If you want to monitor the progresses of all downloading tasks, just register your tableViewController to <code>kDownloadManagerProgressDidChangeNotification</code> notification. The notification.object is a instance of NSURLSessionDownloadTask, and notification.userinfo[kDownloadManagerUserInfoProgress] returns a float number between 0.0 and 1.0 indicate the progress of that task. Each time the progress changes, the task will send this notification.
+
 ![Alt downloading](/downloading.gif)
