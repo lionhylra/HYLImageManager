@@ -25,7 +25,7 @@ Then use other methods as-is.
 
 ####### fetch image
 <pre><code>
--(nullable UIImage *)imageWithName:(NSString *)imageName;
+-(UIImage *)imageWithName:(NSString *)imageName;
 </code></pre>
 ####### save image 
 <pre><code>
@@ -38,11 +38,11 @@ Then use other methods as-is.
 </code></pre>
 ####### delete image
 <pre><code>
-- (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError * __nullable *)error;
+- (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
 </code></pre>
 ####### rename image
 <pre><code>
-- (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError * __nullable *)error;
+- (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
 </code></pre>
 
 ### HYLImageManager+Thumbnail
