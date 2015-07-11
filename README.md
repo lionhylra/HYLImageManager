@@ -32,7 +32,7 @@ Then use other methods as-is.
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
 </code></pre>
 ####### save image using a generated name(timestamp). The image name will be returned.
-*Note, store the name or keep a reference of the name. You need use this name to fetch image again.*
+**Note, store the name or keep a reference of the name. You need use this name to fetch image again.**
 <pre><code>
 -(NSString *)saveImage:(UIImage *)image;
 </code></pre>
