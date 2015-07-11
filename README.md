@@ -6,11 +6,44 @@ For example, when you finish downloading a image, you may need to cache or store
 
 
 # How to use?
-
+Firstly, initialize a instance of HYLImageManager. If you don't care where the image is stored, just use the singleton instance.
 Using it is quite simple.
+
+<pre><code>
+HYLImageManager *manager = [HYLImageManager defaultManager];
+</code></pre>
+In this case all the image file will be stored into a default folder "UserDocuments" under /Documents. Or you can specify the directory path by initialize a instance.
+
+<pre><code>
+HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@[@"folderA",@"folderB"];
+</code></pre>
+In this case, the target path of operation will be <code>/Documents/folderA/folderB</code>
+
+Then use other methods as-is.
 
 ### HYLImageManager
 
+####### fetch image
+<pre><code>
+-(nullable UIImage *)imageWithName:(NSString *)imageName;
+</code></pre>
+####### save image 
+<pre><code>
+- (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
+</code></pre>
+####### save image using a generated name(timestamp). The image name will be returned.
+*Note, store the name or keep a reference of the name. You need use this name to fetch image again.*
+<pre><code>
+-(NSString *)saveImage:(UIImage *)image;
+</code></pre>
+####### delete image
+<pre><code>
+- (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError * __nullable *)error;
+</code></pre>
+####### rename image
+<pre><code>
+- (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError * __nullable *)error;
+</code></pre>
 
 ### HYLImageManager+Thumbnail
 
