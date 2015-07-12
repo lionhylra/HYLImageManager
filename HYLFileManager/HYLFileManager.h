@@ -69,12 +69,47 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
 -(NSString *)pathInCachesForFileName:(NSString *)fileName;
 
 /**
+ *  read data from persistent location by file name
+ *
+ *  @param fileName name of the file
+ *
+ *  @return NSData object
+ */
+- (nullable NSData *)loadDataInDocumentsWithName:(NSString *)fileName;
+
+/**
+ *  read data from cache by file name
+ *
+ *  @param fileName name of teh file
+ *
+ *  @return NSData object
+ */
+- (nullable NSData *)loadDataInCachesWithName:(NSString *)fileName;
+
+/**
+ *  save file to persistent location
+ *
+ *  @param data     the data object need to save
+ *  @param fileName name of the file
+ */
+- (void)saveDataInDocumentsForData:(NSData *)data withName:(NSString *)fileName;
+
+/**
+ *  save file to cache
+ *
+ *  @param data     the data object need to save
+ *  @param fileName name of the file
+ */
+- (void)saveDataInCachesForData:(NSData *)data withName:(NSString *)fileName;
+
+/**
  *  delete a file with name in both /Documents and /Library/Caches
  *
  *  @param fileName name of the file need to be deleted
  *  @return YES if the item was removed successfully or if path was nil. Returns NO if an error occurred. If the delegate aborts the operation for a file, this method returns YES. However, if the delegate aborts the operation for a directory, this method returns NO.
  */
 - (BOOL)deleteFileWithName:(NSString *)fileName error:( NSError * __nullable *)error;
+
 
 /**
  *  delete a file in the /Documents

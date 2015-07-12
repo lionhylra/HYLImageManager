@@ -31,6 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HYLImageManager : HYLFileManager
 @property(nonatomic, assign, readonly) float compressQuality;
 
+/**
+ *  Initialize the image manager with compress quality
+ *
+ *  @param pathComponents pathComponents An array of strings, each string is a name of folder
+ *  @param quality        From 0.0 to 1.0. 0.0 means worst quality, 1.0 means best quality.
+ *
+ *  @return a HYLImageManager instance
+ */
 -(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents compressQuality:(float)quality;
 
 /**

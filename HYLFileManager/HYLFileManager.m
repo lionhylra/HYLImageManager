@@ -64,6 +64,22 @@
     return filePath;
 }
 
+-(NSData *)loadDataInDocumentsWithName:(NSString * __nonnull)fileName{
+    return [NSData dataWithContentsOfFile:[self pathInDocumentsForFileName:fileName]];
+}
+
+-(nullable NSData *)loadDataInCachesWithName:(NSString * __nonnull)fileName{
+    return [NSData dataWithContentsOfFile:[self pathInCachesForFileName:fileName]];
+}
+
+-(void)saveDataInDocumentsForData:(NSData * __nonnull)data withName:(NSString * __nonnull)fileName{
+    [data writeToFile:[self pathInDocumentsForFileName:fileName] atomically:YES];
+}
+
+-(void)saveDataInCachesForData:(NSData * __nonnull)data withName:(NSString * __nonnull)fileName{
+    [data writeToFile:[self pathInCachesForFileName:fileName] atomically:YES];
+}
+
 -(BOOL)deleteFileInDocumentsWithName:(NSString * __nonnull)fileName error:(NSError **)error{
     NSString *filePath = [self pathInDocumentsForFileName:fileName];
     if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
