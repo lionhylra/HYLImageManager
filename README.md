@@ -80,6 +80,9 @@ If you don't want resize, change kDefaultMaxWidth and kDefaultMaxHeight to 0.
 ### UIImage+Store
 This UIImage Category is used in all HYLImageManager. If you want to specify your own path instead of image name in operation, just use this Category.
 
+### HYLFileManager
+This is a more generic version of CRUD convenient tool targeting at NSData.
+
 # Bonus
 
 ### HYLDownloadManager
