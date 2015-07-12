@@ -6,7 +6,13 @@ For example, when you finish downloading a image, you may need to cache or store
 
 
 # How to use?
-Firstly, initialize a instance of HYLImageManager. There are three ways to initialize a HYLImageManager instance. 
+## 1. Choose one class to import according to your needs.
+- <code>#import "HYLImageManager.h"</code> Choose this if you don't need to specify the directory of image file and don't need thumbnail.
+- <code>#import "HYLImageManager+Thumbnail.h"</code> Choose this if you want keep a thumbnail copy of the image. The thumbnail is resized to 100 pixels height and 133 width
+- <code>#import "HYLImageManager+Cache.h"</code> Choose this if you don't need to save image to a persistent location. For example, you want to save images from posts of social networking app.
+- <code>#import "HYLIMageManager+Thumbnail+Cache.h"</code> Choose this if you want to save image into cache and meanwhile keep thumbnail.
+
+## 2. Initialize a instance of HYLImageManager. There are three ways to initialize a HYLImageManager instance. 
 
 1) If you don't care where the image is stored, just use the singleton instance.
 <pre><code>
@@ -26,32 +32,28 @@ In this case, the target path of operation will be <code>/Documents/folderA/fold
 </code></pre>
 The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality).
 
-Then use other methods as-is. Choose one class according to your needs.
-- HYLImageManager.h Choose this if you don't need to specify the directory of image file and don't need thumbnail.
-- HYLImageManager+Thumbnail.h Choose this if you want keep a thumbnail copy of the image. The thumbnail is resized to 100 pixels height and 133 width
-- HYLImageManager+Cache.h Choose this if you don't need to save image to a persistent location. For example, you want to save images from posts of social networking app.
-- HYLIMageManager+Thumbnail+Cache.h Choose this if you want to save image into cache and meanwhile keep thumbnail.
+## 3. Then use other methods as-is. 
 
 ### HYLImageManager
 
-####### fetch image
+###### fetch image
 <pre><code>
 -(UIImage *)imageWithName:(NSString *)imageName;
 </code></pre>
-####### save image 
+###### save image 
 <pre><code>
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
 </code></pre>
-####### save image using a generated name(timestamp). The image name will be returned.
+###### save image using a generated name(timestamp). The image name will be returned.
 **Note, store the name or keep a reference of the name. You need use this name to fetch image again.**
 <pre><code>
 -(NSString *)saveImage:(UIImage *)image;
 </code></pre>
-####### delete image
+###### delete image
 <pre><code>
 - (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
 </code></pre>
-####### rename image
+###### rename image
 <pre><code>
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
 </code></pre>
