@@ -90,3 +90,7 @@ Call <code>- (void)retrievingDownloadingTasks;</code> in UIApplicationDelegate w
 If you want to monitor the progresses of all downloading tasks, just register your tableViewController to <code>kDownloadManagerProgressDidChangeNotification</code> notification. The notification.object is a instance of NSURLSessionDownloadTask, and notification.userinfo[kDownloadManagerUserInfoProgress] returns a float number between 0.0 and 1.0 indicate the progress of that task. Each time the progress changes, the task will send this notification.
 
 ![Alt downloading](/downloading.gif)
+
+# Contact Author
+lionhylra@gmail.com
+
