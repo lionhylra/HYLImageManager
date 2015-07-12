@@ -6,18 +6,25 @@ For example, when you finish downloading a image, you may need to cache or store
 
 
 # How to use?
-Firstly, initialize a instance of HYLImageManager. If you don't care where the image is stored, just use the singleton instance.
-Using it is quite simple.
+Firstly, initialize a instance of HYLImageManager. There are three ways to initialize a HYLImageManager instance. 
 
+1) If you don't care where the image is stored, just use the singleton instance.
 <pre><code>
 HYLImageManager *manager = [HYLImageManager defaultManager];
 </code></pre>
 In this case all the image file will be stored into a default folder "UserDocuments" under /Documents. Or you can specify the directory path by initialize a instance.
 
+2) If you want to specify the location of file, use this:
 <pre><code>
 HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@[@"folderA",@"folderB"];
 </code></pre>
 In this case, the target path of operation will be <code>/Documents/folderA/folderB</code>
+
+3)In above HYLImageManager, every time you save a image, it will be compressed by 50% by default. Alternatively you can create a HYLImageManager of your own compression quality;
+<pre><code>
+-(instancetype)initWithRootPathComponents:(NSArray *)pathComponents compressQuality:(float)quality;
+</code></pre>
+The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality).
 
 Then use other methods as-is. Choose one class according to your needs.
 - HYLImageManager.h Choose this if you don't need to specify the directory of image file and don't need thumbnail.
@@ -63,9 +70,8 @@ All non-thumbnail images will be resized to maximum width 800 and maximum height
 <pre><code>
 static float const kDefaultMaxWidth = 800.0;
 static float const kDefaultMaxHeight = 600.0;
-static float const kDefaultCompressQuality = 0.5;
 </code></pre>
-If you don't want resize and compress, change kDefaultMaxWidth and kDefaultMaxHeight to 0 and kDefaultCompressQuality to 1.0 .
+If you don't want resize, change kDefaultMaxWidth and kDefaultMaxHeight to 0.
 
 # Utility Classes
 
