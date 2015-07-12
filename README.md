@@ -20,7 +20,7 @@ HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@
 </code></pre>
 In this case, the target path of operation will be <code>/Documents/folderA/folderB</code>
 
-3)In above HYLImageManager, every time you save a image, it will be compressed by 50% by default. Alternatively you can create a HYLImageManager of your own compression quality;
+3) In above HYLImageManager, every time you save a image, it will be compressed by 50% by default. Alternatively you can create a HYLImageManager of your own compression quality;
 <pre><code>
 -(instancetype)initWithRootPathComponents:(NSArray *)pathComponents compressQuality:(float)quality;
 </code></pre>
