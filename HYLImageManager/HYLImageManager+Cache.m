@@ -35,7 +35,7 @@
     return [self imageInCachesWithName:imageName isThumbnail:NO];
 }
 - (void)saveImageToCaches:(UIImage *)image withImageName:(NSString *)imageName {
-    [image writeImageToFile:[self pathInCachesForImageName:imageName isThumbnail:NO]];
+    [image writeImageToFile:[self pathInCachesForImageName:imageName isThumbnail:NO] isThumbnail:NO compressQuality:self.compressQuality];
 }
 - (NSString *)saveImageToCachesForImage:(UIImage *)image {
     NSString *imageName = [HYLImageManager nameFromTimestamp];

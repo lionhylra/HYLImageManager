@@ -43,8 +43,8 @@
 }
 - (void)saveImageAndThumbnailWithImageName:(NSString *__nonnull)imageName
                                              forImage:(UIImage *__nonnull)image {
-    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:YES] isThumbnail:YES];
-    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:NO] isThumbnail:NO];
+    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:YES] isThumbnail:YES compressQuality:self.compressQuality];
+    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:NO] isThumbnail:NO compressQuality:self.compressQuality];
 }
 
 - (NSString *__nonnull)saveImageAndThumbnailForImage:(UIImage *__nonnull)image {

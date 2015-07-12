@@ -29,9 +29,16 @@
 
 @implementation HYLImageManager
 -(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents{
-    return [super initWithRootPathComponents:pathComponents];
+    return [self initWithRootPathComponents:pathComponents compressQuality:kDefaultCompressQuality];
 }
 
+-(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents compressQuality:(float)quality{
+    self = [super initWithRootPathComponents:pathComponents];
+    if (self) {
+        _compressQuality = quality;
+    }
+    return self;
+}
 #pragma mark - path
 - (NSString *__nonnull)pathForImageName:(NSString *__nonnull)fileName {
     return [self pathForImageName:fileName isThumbnail:NO];
@@ -44,7 +51,7 @@
 
 #pragma mark - save image
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName {
-    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:NO]];
+    [image writeImageToFile:[self pathForImageName:imageName isThumbnail:NO] isThumbnail:NO compressQuality:self.compressQuality];
 }
 
 - (NSString *)saveImage:(UIImage *)image {

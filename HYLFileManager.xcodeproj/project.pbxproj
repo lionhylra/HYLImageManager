@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59AD7E5E1B5243D4007E0833 /* HYLFileManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E5D1B5243D4007E0833 /* HYLFileManagerTests.m */; };
+		59AD7E751B524479007E0833 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E691B524479007E0833 /* AppDelegate.m */; };
+		59AD7E761B524479007E0833 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AD7E6A1B524479007E0833 /* LaunchScreen.xib */; };
+		59AD7E771B524479007E0833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59AD7E6C1B524479007E0833 /* Main.storyboard */; };
+		59AD7E781B524479007E0833 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E6F1B524479007E0833 /* DetailViewController.m */; };
+		59AD7E791B524479007E0833 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59AD7E701B524479007E0833 /* Images.xcassets */; };
+		59AD7E7A1B524479007E0833 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59AD7E711B524479007E0833 /* Info.plist */; };
+		59AD7E7B1B524479007E0833 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E721B524479007E0833 /* main.m */; };
+		59AD7E7C1B524479007E0833 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E741B524479007E0833 /* MasterViewController.m */; };
+		59AD7E8D1B5244B7007E0833 /* HYLDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E7F1B5244B7007E0833 /* HYLDownloadManager.m */; };
+		59AD7E8E1B5244B7007E0833 /* HYLFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E811B5244B7007E0833 /* HYLFileManager.m */; };
+		59AD7E8F1B5244B7007E0833 /* UIImage+Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E831B5244B7007E0833 /* UIImage+Store.m */; };
+		59AD7E901B5244B7007E0833 /* HYLImageManager+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E861B5244B7007E0833 /* HYLImageManager+Cache.m */; };
+		59AD7E911B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E881B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.m */; };
+		59AD7E921B5244B7007E0833 /* HYLImageManager+Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E8A1B5244B7007E0833 /* HYLImageManager+Thumbnail.m */; };
+		59AD7E931B5244B7007E0833 /* HYLImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD7E8C1B5244B7007E0833 /* HYLImageManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		59AD7E581B5243D4007E0833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59AD7E331B5243D4007E0833 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59AD7E3A1B5243D4007E0833;
+			remoteInfo = HYLFileManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		59AD7E3B1B5243D4007E0833 /* HYLFileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYLFileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59AD7E571B5243D4007E0833 /* HYLFileManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYLFileManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59AD7E5C1B5243D4007E0833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59AD7E5D1B5243D4007E0833 /* HYLFileManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLFileManagerTests.m; sourceTree = "<group>"; };
+		59AD7E681B524479007E0833 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		59AD7E691B524479007E0833 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		59AD7E6B1B524479007E0833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		59AD7E6D1B524479007E0833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		59AD7E6E1B524479007E0833 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		59AD7E6F1B524479007E0833 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		59AD7E701B524479007E0833 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		59AD7E711B524479007E0833 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59AD7E721B524479007E0833 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		59AD7E731B524479007E0833 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		59AD7E741B524479007E0833 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		59AD7E7E1B5244B7007E0833 /* HYLDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDownloadManager.h; sourceTree = "<group>"; };
+		59AD7E7F1B5244B7007E0833 /* HYLDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDownloadManager.m; sourceTree = "<group>"; };
+		59AD7E801B5244B7007E0833 /* HYLFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLFileManager.h; sourceTree = "<group>"; };
+		59AD7E811B5244B7007E0833 /* HYLFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLFileManager.m; sourceTree = "<group>"; };
+		59AD7E821B5244B7007E0833 /* UIImage+Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Store.h"; sourceTree = "<group>"; };
+		59AD7E831B5244B7007E0833 /* UIImage+Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Store.m"; sourceTree = "<group>"; };
+		59AD7E851B5244B7007E0833 /* HYLImageManager+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYLImageManager+Cache.h"; sourceTree = "<group>"; };
+		59AD7E861B5244B7007E0833 /* HYLImageManager+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYLImageManager+Cache.m"; sourceTree = "<group>"; };
+		59AD7E871B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYLImageManager+Thumbnail+Cache.h"; sourceTree = "<group>"; };
+		59AD7E881B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYLImageManager+Thumbnail+Cache.m"; sourceTree = "<group>"; };
+		59AD7E891B5244B7007E0833 /* HYLImageManager+Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYLImageManager+Thumbnail.h"; sourceTree = "<group>"; };
+		59AD7E8A1B5244B7007E0833 /* HYLImageManager+Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYLImageManager+Thumbnail.m"; sourceTree = "<group>"; };
+		59AD7E8B1B5244B7007E0833 /* HYLImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLImageManager.h; sourceTree = "<group>"; };
+		59AD7E8C1B5244B7007E0833 /* HYLImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLImageManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		59AD7E381B5243D4007E0833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59AD7E541B5243D4007E0833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		59AD7E321B5243D4007E0833 = {
+			isa = PBXGroup;
+			children = (
+				59AD7E7D1B5244B7007E0833 /* HYLFileManager */,
+				59AD7E841B5244B7007E0833 /* HYLImageManager */,
+				59AD7E671B524479007E0833 /* ViewController */,
+				59AD7E5A1B5243D4007E0833 /* HYLFileManagerTests */,
+				59AD7E3C1B5243D4007E0833 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59AD7E3C1B5243D4007E0833 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E3B1B5243D4007E0833 /* HYLFileManager.app */,
+				59AD7E571B5243D4007E0833 /* HYLFileManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59AD7E5A1B5243D4007E0833 /* HYLFileManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E5D1B5243D4007E0833 /* HYLFileManagerTests.m */,
+				59AD7E5B1B5243D4007E0833 /* Supporting Files */,
+			);
+			path = HYLFileManagerTests;
+			sourceTree = "<group>";
+		};
+		59AD7E5B1B5243D4007E0833 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E5C1B5243D4007E0833 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59AD7E671B524479007E0833 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E681B524479007E0833 /* AppDelegate.h */,
+				59AD7E691B524479007E0833 /* AppDelegate.m */,
+				59AD7E6A1B524479007E0833 /* LaunchScreen.xib */,
+				59AD7E6C1B524479007E0833 /* Main.storyboard */,
+				59AD7E6E1B524479007E0833 /* DetailViewController.h */,
+				59AD7E6F1B524479007E0833 /* DetailViewController.m */,
+				59AD7E701B524479007E0833 /* Images.xcassets */,
+				59AD7E711B524479007E0833 /* Info.plist */,
+				59AD7E721B524479007E0833 /* main.m */,
+				59AD7E731B524479007E0833 /* MasterViewController.h */,
+				59AD7E741B524479007E0833 /* MasterViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		59AD7E7D1B5244B7007E0833 /* HYLFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E7E1B5244B7007E0833 /* HYLDownloadManager.h */,
+				59AD7E7F1B5244B7007E0833 /* HYLDownloadManager.m */,
+				59AD7E801B5244B7007E0833 /* HYLFileManager.h */,
+				59AD7E811B5244B7007E0833 /* HYLFileManager.m */,
+				59AD7E821B5244B7007E0833 /* UIImage+Store.h */,
+				59AD7E831B5244B7007E0833 /* UIImage+Store.m */,
+			);
+			path = HYLFileManager;
+			sourceTree = "<group>";
+		};
+		59AD7E841B5244B7007E0833 /* HYLImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				59AD7E851B5244B7007E0833 /* HYLImageManager+Cache.h */,
+				59AD7E861B5244B7007E0833 /* HYLImageManager+Cache.m */,
+				59AD7E871B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.h */,
+				59AD7E881B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.m */,
+				59AD7E891B5244B7007E0833 /* HYLImageManager+Thumbnail.h */,
+				59AD7E8A1B5244B7007E0833 /* HYLImageManager+Thumbnail.m */,
+				59AD7E8B1B5244B7007E0833 /* HYLImageManager.h */,
+				59AD7E8C1B5244B7007E0833 /* HYLImageManager.m */,
+			);
+			path = HYLImageManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		59AD7E3A1B5243D4007E0833 /* HYLFileManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59AD7E611B5243D4007E0833 /* Build configuration list for PBXNativeTarget "HYLFileManager" */;
+			buildPhases = (
+				59AD7E371B5243D4007E0833 /* Sources */,
+				59AD7E381B5243D4007E0833 /* Frameworks */,
+				59AD7E391B5243D4007E0833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYLFileManager;
+			productName = HYLFileManager;
+			productReference = 59AD7E3B1B5243D4007E0833 /* HYLFileManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		59AD7E561B5243D4007E0833 /* HYLFileManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59AD7E641B5243D4007E0833 /* Build configuration list for PBXNativeTarget "HYLFileManagerTests" */;
+			buildPhases = (
+				59AD7E531B5243D4007E0833 /* Sources */,
+				59AD7E541B5243D4007E0833 /* Frameworks */,
+				59AD7E551B5243D4007E0833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59AD7E591B5243D4007E0833 /* PBXTargetDependency */,
+			);
+			name = HYLFileManagerTests;
+			productName = HYLFileManagerTests;
+			productReference = 59AD7E571B5243D4007E0833 /* HYLFileManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		59AD7E331B5243D4007E0833 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = HeYilei;
+				TargetAttributes = {
+					59AD7E3A1B5243D4007E0833 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					59AD7E561B5243D4007E0833 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 59AD7E3A1B5243D4007E0833;
+					};
+				};
+			};
+			buildConfigurationList = 59AD7E361B5243D4007E0833 /* Build configuration list for PBXProject "HYLFileManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 59AD7E321B5243D4007E0833;
+			productRefGroup = 59AD7E3C1B5243D4007E0833 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59AD7E3A1B5243D4007E0833 /* HYLFileManager */,
+				59AD7E561B5243D4007E0833 /* HYLFileManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59AD7E391B5243D4007E0833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59AD7E7A1B524479007E0833 /* Info.plist in Resources */,
+				59AD7E791B524479007E0833 /* Images.xcassets in Resources */,
+				59AD7E761B524479007E0833 /* LaunchScreen.xib in Resources */,
+				59AD7E771B524479007E0833 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59AD7E551B5243D4007E0833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59AD7E371B5243D4007E0833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59AD7E7C1B524479007E0833 /* MasterViewController.m in Sources */,
+				59AD7E8D1B5244B7007E0833 /* HYLDownloadManager.m in Sources */,
+				59AD7E751B524479007E0833 /* AppDelegate.m in Sources */,
+				59AD7E7B1B524479007E0833 /* main.m in Sources */,
+				59AD7E921B5244B7007E0833 /* HYLImageManager+Thumbnail.m in Sources */,
+				59AD7E901B5244B7007E0833 /* HYLImageManager+Cache.m in Sources */,
+				59AD7E781B524479007E0833 /* DetailViewController.m in Sources */,
+				59AD7E931B5244B7007E0833 /* HYLImageManager.m in Sources */,
+				59AD7E911B5244B7007E0833 /* HYLImageManager+Thumbnail+Cache.m in Sources */,
+				59AD7E8E1B5244B7007E0833 /* HYLFileManager.m in Sources */,
+				59AD7E8F1B5244B7007E0833 /* UIImage+Store.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59AD7E531B5243D4007E0833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59AD7E5E1B5243D4007E0833 /* HYLFileManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		59AD7E591B5243D4007E0833 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59AD7E3A1B5243D4007E0833 /* HYLFileManager */;
+			targetProxy = 59AD7E581B5243D4007E0833 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		59AD7E6A1B524479007E0833 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59AD7E6B1B524479007E0833 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		59AD7E6C1B524479007E0833 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59AD7E6D1B524479007E0833 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		59AD7E5F1B5243D4007E0833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59AD7E601B5243D4007E0833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		59AD7E621B5243D4007E0833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYLFileManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		59AD7E631B5243D4007E0833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYLFileManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		59AD7E651B5243D4007E0833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYLFileManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYLFileManager.app/HYLFileManager";
+			};
+			name = Debug;
+		};
+		59AD7E661B5243D4007E0833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYLFileManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYLFileManager.app/HYLFileManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59AD7E361B5243D4007E0833 /* Build configuration list for PBXProject "HYLFileManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59AD7E5F1B5243D4007E0833 /* Debug */,
+				59AD7E601B5243D4007E0833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59AD7E611B5243D4007E0833 /* Build configuration list for PBXNativeTarget "HYLFileManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59AD7E621B5243D4007E0833 /* Debug */,
+				59AD7E631B5243D4007E0833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59AD7E641B5243D4007E0833 /* Build configuration list for PBXNativeTarget "HYLFileManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59AD7E651B5243D4007E0833 /* Debug */,
+				59AD7E661B5243D4007E0833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 59AD7E331B5243D4007E0833 /* Project object */;
+}

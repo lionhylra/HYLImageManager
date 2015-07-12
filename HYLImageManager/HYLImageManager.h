@@ -23,13 +23,15 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "HYLFileManager.h"
 NS_ASSUME_NONNULL_BEGIN
 
 
-
 @interface HYLImageManager : HYLFileManager
+@property(nonatomic, assign, readonly) float compressQuality;
+
+-(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents compressQuality:(float)quality;
 
 /**
  *  Get the path of a given image name under /Documents, no matter whether the file exists.

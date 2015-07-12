@@ -25,6 +25,7 @@
 
 #import <UIKit/UIKit.h>
 
+static float const kDefaultCompressQuality = 0.5;
 
 @interface UIImage(Store)
 
@@ -45,6 +46,16 @@
  *  @param isThumbnail indicate whether it is a thumbnail
  */
 -(void)writeImageToFile:(NSString *)path isThumbnail:(BOOL)isThumbnail;
+
+/**
+ *  Write image to file, resize the image based on whether it is thumbnail.
+ *  If it's thumbnail, the height of the image will be limited to 100 pixels, and the image will be compressed by given number
+ *
+ *  @param path        path to write
+ *  @param isThumbnail indicate whether it is a thumbnail
+ *  @param quality     From 0.0 to 1.0. 0.0 means worst quality, 1.0 means best quality.
+ */
+-(void)writeImageToFile:(NSString *)path isThumbnail:(BOOL)isThumbnail compressQuality:(float)quality;
 
 /**
  *  This mathod is identity to [UIImage imageWithContentOfFile]

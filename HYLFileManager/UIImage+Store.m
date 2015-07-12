@@ -27,7 +27,7 @@
 
 static float const kDefaultMaxWidth = 800.0;
 static float const kDefaultMaxHeight = 600.0;
-static float const kDefaultCompressQuality = 0.5;
+
 //static float const kDefaultThumbnailMaxWidth = 100.0;
 static float const kDefaultThumbnailMaxHeight = 100.0;
 
@@ -38,6 +38,10 @@ static float const kDefaultThumbnailMaxHeight = 100.0;
 }
 
 -(void)writeImageToFile:(NSString *)path isThumbnail:(BOOL)isThumbnail{
+    [self writeImageToFile:path isThumbnail:NO compressQuality:kDefaultCompressQuality];
+}
+
+-(void)writeImageToFile:(NSString *)path isThumbnail:(BOOL)isThumbnail compressQuality:(float)quality{
     UIImage *resizedImage;
     if (isThumbnail) {
         resizedImage = [UIImage compressedImage:self withMaxWidth:0 maxHeight:kDefaultThumbnailMaxHeight];
