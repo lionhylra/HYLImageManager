@@ -29,8 +29,24 @@
 <h1>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use?</h1>
 
-<p>Firstly, initialize a instance of HYLImageManager. If you don't care where the image is stored, just use the singleton instance.
-Using it is quite simple.</p>
+<h2>
+<a id="1-choose-one-class-to-import-according-to-your-needs" class="anchor" href="#1-choose-one-class-to-import-according-to-your-needs" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Choose one class to import according to your needs.</h2>
+
+<ul>
+<li>
+<code>#import "HYLImageManager.h"</code> Choose this if you don't need to specify the directory of image file and don't need thumbnail.</li>
+<li>
+<code>#import "HYLImageManager+Thumbnail.h"</code> Choose this if you want keep a thumbnail copy of the image. The thumbnail is resized to 100 pixels height and 133 width</li>
+<li>
+<code>#import "HYLImageManager+Cache.h"</code> Choose this if you don't need to save image to a persistent location. For example, you want to save images from posts of social networking app.</li>
+<li>
+<code>#import "HYLIMageManager+Thumbnail+Cache.h"</code> Choose this if you want to save image into cache and meanwhile keep thumbnail.</li>
+</ul>
+
+<h2>
+<a id="2-initialize-a-instance-of-hylimagemanager-there-are-three-ways-to-initialize-a-hylimagemanager-instance" class="anchor" href="#2-initialize-a-instance-of-hylimagemanager-there-are-three-ways-to-initialize-a-hylimagemanager-instance" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Initialize a instance of HYLImageManager. There are three ways to initialize a HYLImageManager instance.</h2>
+
+<p>1) If you don't care where the image is stored, just use the singleton instance.</p>
 
 <pre><code>
 HYLImageManager *manager = [HYLImageManager defaultManager];
@@ -38,40 +54,44 @@ HYLImageManager *manager = [HYLImageManager defaultManager];
 
 <p>In this case all the image file will be stored into a default folder "UserDocuments" under /Documents. Or you can specify the directory path by initialize a instance.</p>
 
+<p>2) If you want to specify the location of file, use this:</p>
+
 <pre><code>
 HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@[@"folderA",@"folderB"];
 </code></pre>
 
 <p>In this case, the target path of operation will be <code>/Documents/folderA/folderB</code></p>
 
-<p>Then use other methods as-is. Choose one class according to your needs.</p>
+<p>3) In above HYLImageManager, every time you save a image, it will be compressed by 50% by default. Alternatively you can create a HYLImageManager of your own compression quality;</p>
 
-<ul>
-<li>HYLImageManager.h Choose this if you don't need to specify the directory of image file and don't need thumbnail.</li>
-<li>HYLImageManager+Thumbnail.h Choose this if you want keep a thumbnail copy of the image. The thumbnail is resized to 100 pixels height and 133 width</li>
-<li>HYLImageManager+Cache.h Choose this if you don't need to save image to a persistent location. For example, you want to save images from posts of social networking app.</li>
-<li>HYLIMageManager+Thumbnail+Cache.h Choose this if you want to save image into cache and meanwhile keep thumbnail.</li>
-</ul>
+<pre><code>
+-(instancetype)initWithRootPathComponents:(NSArray *)pathComponents compressQuality:(float)quality;
+</code></pre>
+
+<p>The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality).</p>
+
+<h2>
+<a id="3-then-use-other-methods-as-is" class="anchor" href="#3-then-use-other-methods-as-is" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Then use other methods as-is.</h2>
 
 <h3>
 <a id="hylimagemanager" class="anchor" href="#hylimagemanager" aria-hidden="true"><span class="octicon octicon-link"></span></a>HYLImageManager</h3>
 
 <h6>
-<a id="-fetch-image" class="anchor" href="#-fetch-image" aria-hidden="true"><span class="octicon octicon-link"></span></a># fetch image</h6>
+<a id="fetch-image" class="anchor" href="#fetch-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>fetch image</h6>
 
 <pre><code>
 -(UIImage *)imageWithName:(NSString *)imageName;
 </code></pre>
 
 <h6>
-<a id="-save-image" class="anchor" href="#-save-image" aria-hidden="true"><span class="octicon octicon-link"></span></a># save image</h6>
+<a id="save-image" class="anchor" href="#save-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>save image</h6>
 
 <pre><code>
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
 </code></pre>
 
 <h6>
-<a id="-save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" class="anchor" href="#-save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" aria-hidden="true"><span class="octicon octicon-link"></span></a># save image using a generated name(timestamp). The image name will be returned.</h6>
+<a id="save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" class="anchor" href="#save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" aria-hidden="true"><span class="octicon octicon-link"></span></a>save image using a generated name(timestamp). The image name will be returned.</h6>
 
 <p><strong>Note, store the name or keep a reference of the name. You need use this name to fetch image again.</strong></p>
 
@@ -80,14 +100,14 @@ HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@
 </code></pre>
 
 <h6>
-<a id="-delete-image" class="anchor" href="#-delete-image" aria-hidden="true"><span class="octicon octicon-link"></span></a># delete image</h6>
+<a id="delete-image" class="anchor" href="#delete-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>delete image</h6>
 
 <pre><code>
 - (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
 </code></pre>
 
 <h6>
-<a id="-rename-image" class="anchor" href="#-rename-image" aria-hidden="true"><span class="octicon octicon-link"></span></a># rename image</h6>
+<a id="rename-image" class="anchor" href="#rename-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>rename image</h6>
 
 <pre><code>
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
@@ -116,10 +136,9 @@ HYLImageManager *manager = [[HYLImageManager alloc] initWithRootPathComponents:@
 <pre><code>
 static float const kDefaultMaxWidth = 800.0;
 static float const kDefaultMaxHeight = 600.0;
-static float const kDefaultCompressQuality = 0.5;
 </code></pre>
 
-<p>If you don't want resize and compress, change kDefaultMaxWidth and kDefaultMaxHeight to 0 and kDefaultCompressQuality to 1.0 .</p>
+<p>If you don't want resize, change kDefaultMaxWidth and kDefaultMaxHeight to 0.</p>
 
 <h1>
 <a id="utility-classes" class="anchor" href="#utility-classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utility Classes</h1>
@@ -141,7 +160,12 @@ static float const kDefaultCompressQuality = 0.5;
 
 <p>If you want to monitor the progresses of all downloading tasks, just register your tableViewController to <code>kDownloadManagerProgressDidChangeNotification</code> notification. The notification.object is a instance of NSURLSessionDownloadTask, and notification.userinfo[kDownloadManagerUserInfoProgress] returns a float number between 0.0 and 1.0 indicate the progress of that task. Each time the progress changes, the task will send this notification.</p>
 
-<p><img src="https://github.com/lionhylra/HYLImageManager/blob/master/downloading.gif?raw=true" alt="Alt downloading demo"></p>
+<p><img src="https://github.com/lionhylra/HYLImageManager/blob/master/downloading.gif?raw=true" alt="Alt downloading"></p>
+
+<h1>
+<a id="contact-author" class="anchor" href="#contact-author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact Author</h1>
+
+<p><a href="mailto:lionhylra@gmail.com">lionhylra@gmail.com</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/lionhylra/HYLImageManager">HYLImageManager</a> is maintained by <a href="https://github.com/lionhylra">lionhylra</a>.</span>
