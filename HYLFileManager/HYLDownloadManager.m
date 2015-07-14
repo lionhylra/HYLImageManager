@@ -139,10 +139,10 @@
                                 error:&error];
     } else {
         if (![fileManager moveItemAtURL:location toURL:destinationURL error:&error]) {
-            LOG(@"Move file to %@ error!", destinationURL.absoluteString);
+            NSLog(@"Move file to %@ error!", destinationURL.absoluteString);
         }
     }
-    [self.downloadingTasks removeObjectForKey:downloadTask.originalRequest.URL.absoluteString];
+
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -162,12 +162,18 @@
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
  didResumeAtOffset:(int64_t)fileOffset
 expectedTotalBytes:(int64_t)expectedTotalBytes {
-    LOG("DownloadTask did resume");
+    NSLog(@"DownloadTask did resume");
 }
 
 #pragma mark - NSURLSessionTaskDelegate
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-
+    [self.downloadingTasks removeObjectForKey:task.originalRequest.URL.absoluteString];
+    if (error) {
+        NSString *destinationPath = [self pathInDocumentsForFileName:task.originalRequest.URL.lastPathComponent];
+        if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath]){
+            [[NSFileManager defaultManager] removeItemAtPath:destinationPath error:NULL];
+        }
+    }
     /* send notification */
     [[NSNotificationCenter defaultCenter]
         postNotificationName:kDownloadManagerDidCompleteDownloadNotification
