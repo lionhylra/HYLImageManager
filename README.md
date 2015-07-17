@@ -36,30 +36,34 @@ The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. T
 
 ### HYLImageManager
 
-###### fetch image
+##### fetch image
 <pre><code>
 -(UIImage *)imageWithName:(NSString *)imageName;
 </code></pre>
-###### save image 
+##### save image 
 <pre><code>
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
 </code></pre>
-###### save image using a generated name(timestamp). The image name will be returned.
+##### save image using a generated name(timestamp). The image name will be returned.
 **Note, store the name or keep a reference of the name. You need use this name to fetch image again.**
 <pre><code>
 -(NSString *)saveImage:(UIImage *)image;
 </code></pre>
-###### delete image
+##### delete image
 <pre><code>
 - (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
 </code></pre>
-###### rename image
+##### rename image
 <pre><code>
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
 </code></pre>
-##### get the path of a image
+##### get the path of an image
 <pre><code>
 -(NSString *)pathForImageName:(NSString *)fileName;
+</code></pre>
+##### check image existence
+<pre><code>
+-(BOOL)imageExistsForImageName:(NSString *)imageName;
 </code></pre>
 
 ### HYLImageManager+Thumbnail
