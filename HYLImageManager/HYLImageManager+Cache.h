@@ -89,5 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return YES if the item was renamed successfully or the file manager’s delegate aborted the operation deliberately. Returns NO if an error occurred.
  */
 - (BOOL)renameImageInCachesFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError * __nullable *)error;
+
+-(BOOL)imageExistsInCachesForImageName:(NSString *)imageName;
 @end
 NS_ASSUME_NONNULL_END

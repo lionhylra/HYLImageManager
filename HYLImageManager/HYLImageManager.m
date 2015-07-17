@@ -73,6 +73,11 @@
     return [self renameFileInDocumentsFromFileName:oldImageName toNewFileName:newImageName error:error];
 }
 
+#pragma mark - check existence
+-(BOOL)imageExistsForImageName:(NSString *)imageName{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathForImageName:imageName]];
+}
+
 #pragma mark - private method
 + (NSString *)nameFromTimestamp {
     // Get time stamp as file name

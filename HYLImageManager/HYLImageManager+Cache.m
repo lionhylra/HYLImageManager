@@ -52,4 +52,8 @@
     return [self renameFileInCachesFromFileName:oldImageName toNewFileName:newImageName error:error];
 }
 
+-(BOOL)imageExistsInCachesForImageName:(NSString *)imageName{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathInCachesForImageName:imageName]];
+}
+
 @end

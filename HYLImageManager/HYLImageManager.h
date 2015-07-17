@@ -101,6 +101,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError * __nullable *)error;
 
 /**
+ *  check existence of image file
+ *
+ *  @param imageName
+ *
+ *  @return
+ */
+-(BOOL)imageExistsForImageName:(NSString *)imageName;
+
+/**
  *  Utility method, generate file name based on timestamp
  *
  *  @return timestamp
