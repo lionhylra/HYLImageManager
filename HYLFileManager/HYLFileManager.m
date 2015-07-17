@@ -149,4 +149,12 @@
     
 }
 
+-(BOOL)fileExistsInDocumentsForFileName:(NSString * __nonnull)fileName{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathInDocumentsForFileName:fileName]];
+}
+
+-(BOOL)fileExistsInCachesForFileName:(NSString * __nonnull)fileName{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathInCachesForFileName:fileName]];
+}
+
 @end

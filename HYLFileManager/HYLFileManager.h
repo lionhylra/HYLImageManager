@@ -160,5 +160,23 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  */
 - (BOOL)renameFileFromFileName:(NSString *)oldName toNewFileName:(NSString *)newName error:( NSError * __nullable *)error;
 
+
+/**
+ *  Check the existence of file by given file name
+ *
+ *  @param fileName name of the file
+ *
+ *  @return YES if exists
+ */
+-(BOOL) fileExistsInDocumentsForFileName:(NSString *)fileName;
+
+/**
+ *  Check the existence of file by given file name
+ *
+ *  @param fileName name of the file
+ *
+ *  @return YES if exists
+ */
+-(BOOL) fileExistsInCachesForFileName:(NSString *)fileName;
 @end
 NS_ASSUME_NONNULL_END
