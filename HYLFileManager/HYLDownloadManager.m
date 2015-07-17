@@ -54,6 +54,16 @@
     return self;
 }
 
++(instancetype)defaultManager{
+    static dispatch_once_t pred;
+    static id sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[[self class] alloc] init];
+    });
+    return sharedInstance;
+}
+
+
 #pragma mark - Utility method
 + (NSString *)localPathForFileInDocumentWithFileName:(NSString *)name {
     return [[HYLFileManager defaultManager] pathInDocumentsForFileName:name];

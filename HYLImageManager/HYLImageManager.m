@@ -39,6 +39,16 @@
     }
     return self;
 }
+
++(instancetype)defaultManager{
+    static dispatch_once_t pred;
+    static id sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[[self class] alloc] init];
+    });
+    return sharedInstance;
+}
+
 #pragma mark - path
 - (NSString *__nonnull)pathForImageName:(NSString *__nonnull)fileName {
     return [self pathForImageName:fileName isThumbnail:NO];
