@@ -30,7 +30,7 @@
 - (NSString *__nonnull)pathInCachesForImageName:(NSString *__nonnull)fileName isThumbnail:(BOOL)isThumbnail {
     NSString *path;
     if (isThumbnail) {
-        path = [self.thumbnailFileManager pathInCachesForFileName:fileName];
+        path = [self.thumbnailFileManagerC pathInCachesForFileName:fileName];
     } else {
         path = [self pathInCachesForFileName:fileName];
     }
@@ -69,7 +69,7 @@
                               error:error];
 }
 #pragma mark - private getter
-- (HYLFileManager *)thumbnailFileManager {
+- (HYLFileManager *)thumbnailFileManagerC {
     static HYLFileManager *_thumbnailFileManager;
     if (!_thumbnailFileManager) {
         NSArray *thumbnailPathComponents = [self.rootPathComponents arrayByAddingObject:kDirectoryForThumbnail];
