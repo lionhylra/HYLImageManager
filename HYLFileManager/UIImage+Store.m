@@ -44,9 +44,9 @@ static float const kDefaultThumbnailMaxHeight = 100.0;
 -(void)writeImageToFile:(NSString *)path isThumbnail:(BOOL)isThumbnail compressQuality:(float)quality{
     UIImage *resizedImage;
     if (isThumbnail) {
-        resizedImage = [UIImage compressedImage:self withMaxWidth:0 maxHeight:kDefaultThumbnailMaxHeight];
+        resizedImage = [UIImage compressedImage:self withMaxWidth:0 maxHeight:kDefaultThumbnailMaxHeight quality:quality];
     }else{
-        resizedImage = [UIImage compressedImage:self];
+        resizedImage = [UIImage compressedImage:self withMaxWidth:kDefaultMaxWidth maxHeight:kDefaultMaxHeight quality:quality];
     }
     NSData *dataResized = UIImageJPEGRepresentation(resizedImage, 1.0);
     [dataResized writeToFile:path atomically:YES];

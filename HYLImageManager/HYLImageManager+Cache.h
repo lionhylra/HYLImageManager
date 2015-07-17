@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param image     UIImage instance
  *  @param imageName the file name of the saved image
  */
-- (void)saveImageToCaches:(UIImage *)image withImageName:(NSString *)imageName;
+- (void)saveImageToCachesWithImageName:(NSString *)imageName forImage:(UIImage *)image;
 
 /**
  *  Save a image using a generated file name(timestamp).

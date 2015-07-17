@@ -34,12 +34,12 @@
 - (nullable UIImage *)imageInCachesWithName:(NSString *)imageName {
     return [self imageInCachesWithName:imageName isThumbnail:NO];
 }
-- (void)saveImageToCaches:(UIImage *)image withImageName:(NSString *)imageName {
+- (void)saveImageToCachesWithImageName:(NSString * __nonnull)imageName forImage:(UIImage * __nonnull)image {
     [image writeImageToFile:[self pathInCachesForImageName:imageName isThumbnail:NO] isThumbnail:NO compressQuality:self.compressQuality];
 }
 - (NSString *)saveImageToCachesForImage:(UIImage *)image {
     NSString *imageName = [HYLImageManager nameFromTimestamp];
-    [self saveImageToCaches:image withImageName:imageName];
+    [self saveImageToCachesWithImageName:imageName forImage:image];
     return imageName;
 }
 - (BOOL)deleteImageInCachesWithImageName:(NSString *__nonnull)imageName
