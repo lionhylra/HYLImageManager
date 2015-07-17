@@ -57,6 +57,10 @@ The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. T
 <pre><code>
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
 </code></pre>
+##### get the path of a image
+<pre><code>
+-(NSString *)pathForImageName:(NSString *)fileName;
+</code></pre>
 
 ### HYLImageManager+Thumbnail
 This is a thumbnail version of HYLImageManager. All READ operation in this version has a flag for thumbnail. For save, delete and rename operations, they apply to both big image and thumnail. All thumbnails are saved into a directory called thumbnail. If your image file path is /Documents/folderA/folderB/aImage.png the path of the thumbnail will be in /Documents/folderA/folderB/thumbnail/aImage.png
