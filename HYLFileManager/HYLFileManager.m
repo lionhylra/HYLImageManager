@@ -31,16 +31,17 @@
 
 @implementation HYLFileManager
 
--(instancetype)initWithRootPathComponents:(NSArray *)pathComponents {
+-(instancetype)initWithDirectory:(NSSearchPathDirectory)directory rootPathComponents:(nullable NSArray *)pathComponents {
     self = [super init];
     if (self) {
         _rootPathComponents = pathComponents;
+        _directory = directory;
     }
     return self;
 }
 
 -(instancetype)init{
-    return [self initWithRootPathComponents:@[kDefaultPathComponent]];
+    return [self initWithDirectory:kDefaultDirectory rootPathComponents:@[kDefaultPathComponent]];
 }
 
 +(instancetype)defaultManager{
@@ -52,67 +53,40 @@
     return sharedInstance;
 }
 
--(NSString *)pathInDocumentsForFileName:(NSString *)fileName{
-    NSString *filePath = [self buildPathInSystemDirectory:[self pathForDocuments]];
+-(NSString *)pathForFileName:(NSString *)fileName{
+    NSString *filePath = [self buildPathInSystemDirectory:NSSearchPathForDirectoriesInDomains(self.directory, NSUserDomainMask, YES).firstObject];
     filePath = [filePath stringByAppendingPathComponent:fileName];
     return filePath;
 }
 
--(NSString *)pathInCachesForFileName:(NSString *)fileName{
-    NSString *filePath = [self buildPathInSystemDirectory:[self pathForCaches]];
-    filePath = [filePath stringByAppendingPathComponent:fileName];
-    return filePath;
+-(NSData *)loadDataWithName:(NSString * __nonnull)fileName{
+    return [NSData dataWithContentsOfFile:[self pathForFileName:fileName]];
 }
 
--(NSData *)loadDataInDocumentsWithName:(NSString * __nonnull)fileName{
-    return [NSData dataWithContentsOfFile:[self pathInDocumentsForFileName:fileName]];
+-(void)saveData:(NSData * __nonnull)data withName:(NSString * __nonnull)fileName{
+    NSString *path = [self pathForFileName:fileName];
+    [self validateDirectoryPath:[path stringByDeletingLastPathComponent]];
+    [data writeToFile:path atomically:YES];
 }
 
--(nullable NSData *)loadDataInCachesWithName:(NSString * __nonnull)fileName{
-    return [NSData dataWithContentsOfFile:[self pathInCachesForFileName:fileName]];
-}
-
--(void)saveDataInDocumentsForData:(NSData * __nonnull)data withName:(NSString * __nonnull)fileName{
-    [data writeToFile:[self pathInDocumentsForFileName:fileName] atomically:YES];
-}
-
--(void)saveDataInCachesForData:(NSData * __nonnull)data withName:(NSString * __nonnull)fileName{
-    [data writeToFile:[self pathInCachesForFileName:fileName] atomically:YES];
-}
-
--(BOOL)deleteFileInDocumentsWithName:(NSString * __nonnull)fileName error:(NSError **)error{
-    NSString *filePath = [self pathInDocumentsForFileName:fileName];
+-(BOOL)deleteFileWithName:(NSString * __nonnull)fileName error:(NSError **)error{
+    NSString *filePath = [self pathForFileName:fileName];
     if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
         return NO;
     }
     
     return [[NSFileManager defaultManager] removeItemAtPath:filePath error:error];
-}
-
--(BOOL)deleteFileInCachesWithName:(NSString * __nonnull)fileName error:(NSError **)error{
-    NSString *filePath = [self pathInCachesForFileName:fileName];
-    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-        return NO;
-    }
-    
-    return [[NSFileManager defaultManager] removeItemAtPath:filePath error:error];
-}
-
--(BOOL)deleteFileWithName:(NSString * __nonnull)fileName error:(NSError *__autoreleasing  __nullable * __nullable)error{
-    
-  return [self deleteFileInDocumentsWithName:fileName error:error]&&[self deleteFileInCachesWithName:fileName error:error];
-}
-
--(BOOL)renameFileInDocumentsFromFileName:(NSString * __nonnull)oldName toNewFileName:(NSString * __nonnull)newName error:(NSError *__autoreleasing  __nullable * __nullable)error{
-    return [[NSFileManager defaultManager] moveItemAtPath:[self pathInDocumentsForFileName:oldName] toPath:[self pathInDocumentsForFileName:newName] error:error];
-}
-
--(BOOL)renameFileInCachesFromFileName:(NSString * __nonnull)oldName toNewFileName:(NSString * __nonnull)newName error:(NSError *__autoreleasing  __nullable * __nullable)error{
-    return [[NSFileManager defaultManager] moveItemAtPath:[self pathInCachesForFileName:oldName] toPath:[self pathInCachesForFileName:newName] error:error];
 }
 
 -(BOOL)renameFileFromFileName:(NSString * __nonnull)oldName toNewFileName:(NSString * __nonnull)newName error:(NSError *__autoreleasing  __nullable * __nullable)error{
-    return [self renameFileInDocumentsFromFileName:oldName toNewFileName:newName error:error]&&[self renameFileInCachesFromFileName:oldName toNewFileName:newName error:error];
+    NSString *oldPath = [self pathForFileName:oldName];
+    NSString *newPath = [self pathForFileName:newName];
+    [self validateDirectoryPath:[newPath stringByDeletingLastPathComponent]];
+    return [[NSFileManager defaultManager] moveItemAtPath:oldPath toPath:newPath error:error];
+}
+
+-(BOOL)fileExistsForFileName:(NSString * __nonnull)fileName{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathForFileName:fileName]];
 }
 #pragma mark - private mathods
 
@@ -123,19 +97,11 @@
             filePath = [filePath stringByAppendingPathComponent:component];
         }
     }
-    [self validatePath:filePath];
+    
     return filePath;
 }
 
--(NSString *)pathForDocuments{
-    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-}
-
--(NSString *)pathForCaches{
-    return NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-}
-
--(void)validatePath:(NSString *)path{
+-(void)validateDirectoryPath:(NSString *)path{
     BOOL isDirectory;
     if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory]&&isDirectory){
         return;
@@ -149,12 +115,6 @@
     
 }
 
--(BOOL)fileExistsInDocumentsForFileName:(NSString * __nonnull)fileName{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathInDocumentsForFileName:fileName]];
-}
 
--(BOOL)fileExistsInCachesForFileName:(NSString * __nonnull)fileName{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathInCachesForFileName:fileName]];
-}
 
 @end

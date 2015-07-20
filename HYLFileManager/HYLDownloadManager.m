@@ -29,6 +29,7 @@
 @property(nonatomic, strong) NSMutableDictionary *downloadingTasks;
 @property(nonatomic, strong) NSURLSession *backgroundSession;
 @property(nonatomic, strong) NSMutableDictionary *completionHandlerDictionary;
+@property(nonatomic, strong) HYLFileManager *fileManager;
 
 @end
 
@@ -37,9 +38,10 @@
 #pragma mark - constructor
 
 - (instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents identifier:(NSString *)identifier {
-    self = [super initWithRootPathComponents:pathComponents];
+    self = [super init];
     if (self) {
         _identifier = identifier;
+        _fileManager = [[HYLFileManager alloc]initWithDirectory:NSDocumentDirectory rootPathComponents:pathComponents];
     }
     return self;
 }
@@ -66,11 +68,11 @@
 
 #pragma mark - Utility method
 + (NSString *)localPathForFileInDocumentWithFileName:(NSString *)name {
-    return [[HYLFileManager defaultManager] pathInDocumentsForFileName:name];
+    return [[HYLFileManager defaultManager] pathForFileName:name];
 }
 
 - (NSString *)localPathForFileInDocumentWithFileName:(NSString *)name {
-    return [self pathInDocumentsForFileName:name];
+    return [self.fileManager pathForFileName:name];
 }
 
 #pragma mark - download tasks
@@ -110,6 +112,13 @@
         }];
 }
 
+-(BOOL)fileExistsInDocumentsForFileName:(NSString * __nonnull)fileName{
+    return [self.fileManager fileExistsForFileName:fileName];
+}
+
+-(BOOL)deleteFileInDocumentsWithName:(NSString * __nonnull)filename error:(NSError *__autoreleasing  __nullable * __nullable)error{
+    return [self.fileManager deleteFileWithName:filename error:error];
+}
 #pragma mark - getters
 - (NSMutableDictionary *)downloadingTasks {
     if (!_downloadingTasks) {
@@ -179,7 +188,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     [self.downloadingTasks removeObjectForKey:task.originalRequest.URL.absoluteString];
     if (error) {
-        NSString *destinationPath = [self pathInDocumentsForFileName:task.originalRequest.URL.lastPathComponent];
+        NSString *destinationPath = [self localPathForFileInDocumentWithFileName:task.originalRequest.URL.lastPathComponent];
         if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath]){
             [[NSFileManager defaultManager] removeItemAtPath:destinationPath error:NULL];
         }

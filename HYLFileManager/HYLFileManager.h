@@ -28,9 +28,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 static NSString *const kDefaultPathComponent = @"UserDocuments";
+static NSSearchPathDirectory const kDefaultDirectory = NSDocumentDirectory;
 
 @interface HYLFileManager : NSObject
 @property (nonatomic, strong, readonly, nullable) NSArray *rootPathComponents;
+@property (nonatomic, assign, readonly) NSSearchPathDirectory directory;
 
 /**
  *  Returns the shared file manager object for the process.
@@ -46,7 +48,7 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  *
  *  @return
  */
--(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents NS_DESIGNATED_INITIALIZER;
+-(instancetype)initWithDirectory:(NSSearchPathDirectory)directory rootPathComponents:(nullable NSArray *)pathComponents NS_DESIGNATED_INITIALIZER;
 
 /**
  *  get the path of file based on file name and path components used to construct file manager
@@ -56,17 +58,7 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  *
  *  @return a complete path for a file gived with name
  */
--(NSString *)pathInDocumentsForFileName:(NSString *)fileName;
-
-/**
- *  get the path of file based on file name and path components used to construct file manager
- *  e.g. If the path components is @[@"folderA",@"folderB",@"folderC"], and the file name is myPhoto.png, then the path is [sandbox path]/Library/Caches/folderA/folderB/folderC/myPhoto.png
- *
- *  @param fileName the name of the file
- *
- *  @return a complete path for a file gived with name
- */
--(NSString *)pathInCachesForFileName:(NSString *)fileName;
+-(NSString *)pathForFileName:(NSString *)fileName;
 
 /**
  *  read data from persistent location by file name
@@ -75,16 +67,7 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  *
  *  @return NSData object
  */
-- (nullable NSData *)loadDataInDocumentsWithName:(NSString *)fileName;
-
-/**
- *  read data from cache by file name
- *
- *  @param fileName name of teh file
- *
- *  @return NSData object
- */
-- (nullable NSData *)loadDataInCachesWithName:(NSString *)fileName;
+- (nullable NSData *)loadDataWithName:(NSString *)fileName;
 
 /**
  *  save file to persistent location
@@ -92,70 +75,24 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  *  @param data     the data object need to save
  *  @param fileName name of the file
  */
-- (void)saveDataInDocumentsForData:(NSData *)data withName:(NSString *)fileName;
+- (void)saveData:(NSData *)data withName:(NSString *)fileName;
 
 /**
- *  save file to cache
+ *  delete a file
  *
- *  @param data     the data object need to save
- *  @param fileName name of the file
- */
-- (void)saveDataInCachesForData:(NSData *)data withName:(NSString *)fileName;
-
-/**
- *  delete a file with name in both /Documents and /Library/Caches
+ *  @param fileName the name of the file need to be deleted
+ *  @param error    On input, a pointer to an error object. If an error occurs, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.
  *
- *  @param fileName name of the file need to be deleted
  *  @return YES if the item was removed successfully or if path was nil. Returns NO if an error occurred. If the delegate aborts the operation for a file, this method returns YES. However, if the delegate aborts the operation for a directory, this method returns NO.
  */
 - (BOOL)deleteFileWithName:(NSString *)fileName error:( NSError * __nullable *)error;
 
-
 /**
- *  delete a file in the /Documents
- *
- *  @param fileName the name of the file need to be deleted
- *  @param error    On input, a pointer to an error object. If an error occurs, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.
- *
- *  @return YES if the item was removed successfully or if path was nil. Returns NO if an error occurred. If the delegate aborts the operation for a file, this method returns YES. However, if the delegate aborts the operation for a directory, this method returns NO.
- */
--(BOOL)deleteFileInDocumentsWithName:(NSString *)fileName error:( NSError * __nullable *)error;
-
-/**
- *  delete a file in the /Library/Caches
- *
- *  @param fileName the name of the file need to be deleted
- *  @param error    On input, a pointer to an error object. If an error occurs, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.
- *
- *  @return YES if the item was removed successfully or if path was nil. Returns NO if an error occurred. If the delegate aborts the operation for a file, this method returns YES. However, if the delegate aborts the operation for a directory, this method returns NO.
- */
--(BOOL)deleteFileInCachesWithName:(NSString *)fileName error:( NSError * __nullable *)error;
-
-/**
- *  rename a file in the /Documents
- *
- *  @param oldName
- *  @param newName
- *  @param error On input, a pointer to an error object. If an error occurs, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.
- *  @return YES if the item was renamed successfully or the file manager’s delegate aborted the operation deliberately. Returns NO if an error occurred.
- */
-- (BOOL)renameFileInDocumentsFromFileName:(NSString *)oldName toNewFileName:(NSString *)newName error:( NSError * __nullable *)error;
-
-/**
- *  rename file in /Library/Caches
+ *  rename file
  *
  *  @param oldName
  *  @param newName
  *  @param error On input, a pointer to an error object. If an error occurs, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.  
- *  @return YES if the item was renamed successfully or the file manager’s delegate aborted the operation deliberately. Returns NO if an error occurred.
- */
-- (BOOL)renameFileInCachesFromFileName:(NSString *)oldName toNewFileName:(NSString *)newName error:( NSError * __nullable *)error;
-
-/**
- *  rename file in both /Documents and /Library/Caches
- *
- *  @param oldName
- *  @param newName
  *  @return YES if the item was renamed successfully or the file manager’s delegate aborted the operation deliberately. Returns NO if an error occurred.
  */
 - (BOOL)renameFileFromFileName:(NSString *)oldName toNewFileName:(NSString *)newName error:( NSError * __nullable *)error;
@@ -168,15 +105,7 @@ static NSString *const kDefaultPathComponent = @"UserDocuments";
  *
  *  @return YES if exists
  */
--(BOOL) fileExistsInDocumentsForFileName:(NSString *)fileName;
+-(BOOL) fileExistsForFileName:(NSString *)fileName;
 
-/**
- *  Check the existence of file by given file name
- *
- *  @param fileName name of the file
- *
- *  @return YES if exists
- */
--(BOOL) fileExistsInCachesForFileName:(NSString *)fileName;
 @end
 NS_ASSUME_NONNULL_END

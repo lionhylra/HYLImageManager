@@ -38,7 +38,7 @@ static NSString *const kDownloadManagerUserInfoCompleteError = @"CompleteError";
 typedef void (^CompletionHandlerType)(void);
 
 
-@interface HYLDownloadManager : HYLFileManager <NSURLSessionDownloadDelegate, NSURLSessionTaskDelegate, NSURLSessionDelegate>
+@interface HYLDownloadManager : NSObject <NSURLSessionDownloadDelegate, NSURLSessionTaskDelegate, NSURLSessionDelegate>
 
 @property (nonatomic, copy) NSString *identifier;
 
@@ -52,6 +52,8 @@ typedef void (^CompletionHandlerType)(void);
 -(instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents;
 
 - (instancetype)initWithRootPathComponents:(nullable NSArray *)pathComponents identifier:(NSString *)identifier;
+
++(instancetype)defaultManager;
 
 /**
  *  Get the local file path of a file based on the file name in the default folder.
@@ -108,5 +110,9 @@ typedef void (^CompletionHandlerType)(void);
  * the dictionary property of DownloadManager.
  */
 - (void)retrievingDownloadingTasks;
+
+- (BOOL)fileExistsInDocumentsForFileName:(NSString *)fileName;
+
+-(BOOL)deleteFileInDocumentsWithName:(NSString *)filename error:(NSError *__nullable *)error;
 @end
 NS_ASSUME_NONNULL_END

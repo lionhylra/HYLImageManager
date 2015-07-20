@@ -1,5 +1,5 @@
 //
-//  UIImage+Store.h
+//  UIImage+Compress.h
 //The MIT License (MIT)
 //
 //Copyright (c) 2015 Yilei He
@@ -27,7 +27,7 @@
 
 static float const kDefaultCompressQuality = 0.5;
 
-@interface UIImage(Store)
+@interface UIImage(Compress)
 
 
 /**
