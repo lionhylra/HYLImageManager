@@ -82,6 +82,8 @@
 }
 
 - (NSURLSessionDownloadTask *)startDownloadTaskWithURL:(NSString *)urlString {
+    NSAssert(urlString.length>0, @"Download URL can't be empty");
+    NSAssert([urlString hasPrefix:@"http"]||[urlString hasPrefix:@"https"], @"The download url must be valid");
     NSURLSessionDownloadTask *task = self.downloadingTasks[urlString];
     if (task) {
         if (task.state != NSURLSessionTaskStateCompleted) {
