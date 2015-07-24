@@ -34,34 +34,34 @@ Select one of the ninitializer below to get a HYLImageManager instance.
 ## 2. Then use other methods as-is. 
 
 ##### fetch image
-<pre><code>
+```objective-c
 -(UIImage *)imageWithName:(NSString *)imageName;
-</code></pre>
+```
 ##### save image 
-<pre><code>
+```objective-c
 - (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
-</code></pre>
+```
 ##### save image using a generated name(timestamp). The image name will be returned.
 **Note, store the name or keep a reference of the name. You need use this name to fetch image again.**
-<pre><code>
+```objective-c
 -(NSString *)saveImage:(UIImage *)image;
-</code></pre>
+```
 ##### delete image
-<pre><code>
+```objective-c
 - (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
-</code></pre>
+```
 ##### rename image
-<pre><code>
+```objective-c
 - (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
-</code></pre>
+```
 ##### get the path of an image
-<pre><code>
+```objective-c
 -(NSString *)pathForImageName:(NSString *)fileName;
-</code></pre>
+```
 ##### check image existence
-<pre><code>
+```objective-c
 -(BOOL)imageExistsForImageName:(NSString *)imageName;
-</code></pre>
+```
 
 ### Note
 For more details about how to use these methods,  please refer to the header file.
