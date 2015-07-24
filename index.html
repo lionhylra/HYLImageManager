@@ -62,53 +62,39 @@
 <h5>
 <a id="fetch-image" class="anchor" href="#fetch-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>fetch image</h5>
 
-<pre><code>
--(UIImage *)imageWithName:(NSString *)imageName;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>-(UIImage *)imageWithName:(<span class="pl-c1">NSString</span> *)imageName;</pre></div>
 
 <h5>
 <a id="save-image" class="anchor" href="#save-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>save image</h5>
 
-<pre><code>
-- (void)saveImage:(UIImage *)image withImageName:(NSString *)imageName;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>- (<span class="pl-k">void</span>)saveImage:(UIImage *)image withImageName:(<span class="pl-c1">NSString</span> *)imageName;</pre></div>
 
 <h5>
 <a id="save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" class="anchor" href="#save-image-using-a-generated-nametimestamp-the-image-name-will-be-returned" aria-hidden="true"><span class="octicon octicon-link"></span></a>save image using a generated name(timestamp). The image name will be returned.</h5>
 
 <p><strong>Note, store the name or keep a reference of the name. You need use this name to fetch image again.</strong></p>
 
-<pre><code>
--(NSString *)saveImage:(UIImage *)image;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>-(<span class="pl-c1">NSString</span> *)saveImage:(UIImage *)image;</pre></div>
 
 <h5>
 <a id="delete-image" class="anchor" href="#delete-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>delete image</h5>
 
-<pre><code>
-- (BOOL)deleteImageWithImageName:(NSString *)imageName error:(NSError **)error;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>- (<span class="pl-k">BOOL</span>)deleteImageWithImageName:(<span class="pl-c1">NSString</span> *)imageName error:(<span class="pl-c1">NSError</span> **)error;</pre></div>
 
 <h5>
 <a id="rename-image" class="anchor" href="#rename-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>rename image</h5>
 
-<pre><code>
-- (BOOL)renameImageFromImageName:(NSString *)oldImageName toNewImageName:(NSString *)newImageName error:(NSError **)error;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>- (<span class="pl-k">BOOL</span>)renameImageFromImageName:(<span class="pl-c1">NSString</span> *)oldImageName toNewImageName:(<span class="pl-c1">NSString</span> *)newImageName error:(<span class="pl-c1">NSError</span> **)error;</pre></div>
 
 <h5>
 <a id="get-the-path-of-an-image" class="anchor" href="#get-the-path-of-an-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>get the path of an image</h5>
 
-<pre><code>
--(NSString *)pathForImageName:(NSString *)fileName;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>-(<span class="pl-c1">NSString</span> *)pathForImageName:(<span class="pl-c1">NSString</span> *)fileName;</pre></div>
 
 <h5>
 <a id="check-image-existence" class="anchor" href="#check-image-existence" aria-hidden="true"><span class="octicon octicon-link"></span></a>check image existence</h5>
 
-<pre><code>
--(BOOL)imageExistsForImageName:(NSString *)imageName;
-</code></pre>
+<div class="highlight highlight-objective-c"><pre>-(<span class="pl-k">BOOL</span>)imageExistsForImageName:(<span class="pl-c1">NSString</span> *)imageName;</pre></div>
 
 <h3>
 <a id="note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note</h3>
