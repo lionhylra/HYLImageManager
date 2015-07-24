@@ -72,7 +72,7 @@
 -(BOOL)deleteFileWithName:(NSString * __nonnull)fileName error:(NSError **)error{
     NSString *filePath = [self pathForFileName:fileName];
     if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-        return NO;
+        return YES;
     }
     
     return [[NSFileManager defaultManager] removeItemAtPath:filePath error:error];

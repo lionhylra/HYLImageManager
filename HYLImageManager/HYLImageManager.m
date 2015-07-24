@@ -154,6 +154,7 @@
     
     // Get the integer part to use as file name
     NSString *fileName = [[timestamp componentsSeparatedByString:@"."] firstObject];
+    fileName = [fileName stringByAppendingString:@".jpg"];
     return fileName;
 }
 
