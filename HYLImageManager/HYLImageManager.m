@@ -66,6 +66,7 @@
 
 
 +(instancetype)defaultManager{
+    /* Singleton */
     static dispatch_once_t pred;
     static id sharedInstance = nil;
     dispatch_once(&pred, ^{
@@ -121,6 +122,7 @@
     if (self.ignoreThumbnail) {
         return;
     }
+    /* handle thumbnail */
     UIImage *thumbnailImage = [UIImage compressedImage:image withMaxWidth:self.thumbnailMaxSize.width maxHeight:self.thumbnailMaxSize.width quality:self.compressionQuality*0.9];
     NSData *thumbnailData = UIImageJPEGRepresentation(thumbnailImage, 1.0);
     [self.thumbnailFileManager saveData:thumbnailData withName:imageName];
@@ -132,6 +134,7 @@
     if (self.ignoreThumbnail) {
         return deleteOriginalSuccess;
     }
+    /* thumbnail */
     BOOL deleteThumbnailSuccess = [self.thumbnailFileManager deleteFileWithName:imageName error:error];
     return deleteOriginalSuccess&&deleteThumbnailSuccess;
 }
