@@ -196,11 +196,22 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
 
 #pragma mark - NSURLSessionTaskDelegate
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    [self.downloadingTasks removeObjectForKey:task.originalRequest.URL.absoluteString];
+    if (task.originalRequest.URL.absoluteString) {
+        [self.downloadingTasks removeObjectForKey:task.originalRequest.URL.absoluteString];
+    }
     if (error) {
         NSString *destinationPath = [self localPathForFileInDocumentWithFileName:task.originalRequest.URL.lastPathComponent];
         if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath]){
             [[NSFileManager defaultManager] removeItemAtPath:destinationPath error:NULL];
+        }
+        if (error.code==-1002) {
+            /* In this case, task.originalRequest.URL is nil */
+            for (NSString *key in self.downloadingTasks.allKeys) {
+                if(self.downloadingTasks[key] == task){
+                    [self.downloadingTasks removeObjectForKey:key];
+                    break;
+                }
+            }
         }
     }
     /* send notification */
