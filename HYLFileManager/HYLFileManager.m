@@ -55,6 +55,15 @@ NSString *const kDefaultPathComponent = @"UserDocuments";
 }
 
 -(NSString *)pathForFileName:(NSString *)fileName{
+    if (fileName == nil) {
+        return nil;
+    }
+    if ([fileName isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
+    if (fileName.length == 0) {
+        return nil;
+    }
     NSString *filePath = [self buildPathInSystemDirectory:NSSearchPathForDirectoriesInDomains(self.directory, NSUserDomainMask, YES).firstObject];
     filePath = [filePath stringByAppendingPathComponent:fileName];
     return filePath;
