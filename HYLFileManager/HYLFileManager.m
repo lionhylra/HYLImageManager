@@ -112,6 +112,9 @@ NSString *const kDefaultPathComponent = @"UserDocuments";
 }
 
 -(void)validateDirectoryPath:(NSString *)path{
+    if (!path) {
+        return;
+    }
     BOOL isDirectory;
     if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory]&&isDirectory){
         return;
