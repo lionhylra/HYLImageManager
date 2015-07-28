@@ -68,7 +68,7 @@ extern NSString *const kDefaultPathComponent;
  *
  *  @return HYLImageManager instance
  */
--(instancetype)initWithDirectory:(NSSearchPathDirectory)directory pathComponents:(NSArray *)pathComponents maxSize:(CGSize)maxSize;
+-(instancetype)initWithDirectory:(NSSearchPathDirectory)directory pathComponents:(nullable NSArray *)pathComponents maxSize:(CGSize)maxSize;
 
 /**
  *  Init a image manager with most customization
