@@ -27,7 +27,7 @@
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const kDefaultPathComponent = @"UserDocuments";
+extern NSString *const kDefaultPathComponent;
 static NSSearchPathDirectory const kDefaultDirectory = NSDocumentDirectory;
 
 @interface HYLFileManager : NSObject

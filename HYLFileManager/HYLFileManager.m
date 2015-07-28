@@ -24,6 +24,7 @@
 //SOFTWARE.
 
 #import "HYLFileManager.h"
+NSString *const kDefaultPathComponent = @"UserDocuments";
 
 @interface HYLFileManager()
 

@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
-
+extern NSString *const kDefaultPathComponent;
 
 @interface HYLImageManager : NSObject
 @property(nonatomic, assign, readonly) CGSize maxSize;

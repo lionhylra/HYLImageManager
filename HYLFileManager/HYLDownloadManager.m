@@ -149,18 +149,26 @@
     NSURL *destinationURL = [NSURL fileURLWithPath:destinationPath];
 
     /* move file to destination */
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    if ([fileManager fileExistsAtPath:[destinationURL path]]) {
-        [fileManager replaceItemAtURL:destinationURL
-                        withItemAtURL:destinationURL
+    if ([[NSFileManager defaultManager] fileExistsAtPath:destinationPath]) {
+        [[NSFileManager defaultManager] replaceItemAtURL:destinationURL
+                        withItemAtURL:location
                        backupItemName:nil
                               options:NSFileManagerItemReplacementUsingNewMetadataOnly
                      resultingItemURL:nil
                                 error:&error];
     } else {
-        if (![fileManager moveItemAtURL:location toURL:destinationURL error:&error]) {
-            NSLog(@"Move file to %@ error!", destinationURL.absoluteString);
+        BOOL isDir;
+        NSError *error2;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:[destinationPath stringByDeletingLastPathComponent] isDirectory:&isDir]||!isDir) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:[destinationPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:&error2];
+            if (error2) {
+                NSLog(@"%@", error2.localizedDescription);
+            }
+        }
+        
+        if (![[NSFileManager defaultManager] moveItemAtURL:location toURL:destinationURL error:&error]) {
+            NSLog(@"Move file to %@ error! %@", destinationURL.absoluteString, error.localizedDescription);
         }
     }
 
