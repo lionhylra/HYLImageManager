@@ -6,6 +6,11 @@ It is simple enough to use, and also it is flexible enough to costomize.
 
 For example, when you finish downloading a image, you may need to cache or store in local file system for later use. So you can just call <code>[[HYLImageManager defaultManager] saveImage:image withImageName:@"demoImage.png"</code>. When you want to get it back, just call <code>UIImage* image = [[HYLImageManager defaultManager] imageWithName:@"demoImage.png"</code>.
 
+#Install
+##1. CocoaPods
+(coming soon...)
+##2. Drop-in
+Just Drop the "HYLImageManager" folder in you project.
 
 # How to use?
 ## 1. Initialize a instance of HYLImageManager. 
