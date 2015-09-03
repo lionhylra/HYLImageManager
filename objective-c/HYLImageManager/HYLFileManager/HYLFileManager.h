@@ -58,7 +58,7 @@ static NSSearchPathDirectory const kDefaultDirectory = NSDocumentDirectory;
  *
  *  @return a complete path for a file gived with name
  */
--(NSString *)pathForFileName:(NSString *)fileName;
+-(nullable NSString *)pathForFileName:(NSString *)fileName;
 
 /**
  *  read data from persistent location by file name
