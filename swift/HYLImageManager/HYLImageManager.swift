@@ -104,29 +104,71 @@ public class HYLImageManager: NSObject {
         self.thumbnailFileManager.saveData(thumbnailData, withName: imageName)
     }
     
-    public func deleteImageWithImageName(imageName:String, error:NSErrorPointer) -> Bool{
-        let didDeleteOriginal = self.fileManager.deleteFileWithName(imageName, error: error)
-        if self.ignoreThumbnail {
-            return didDeleteOriginal
+    public func deleteImageWithImageName(imageName:String) throws{
+        var error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+        let didDeleteOriginal: Bool
+        do {
+            try self.fileManager.deleteFileWithName(imageName)
+            didDeleteOriginal = true
+        } catch var error1 as NSError {
+            error = error1
+            didDeleteOriginal = false
         }
-        let didDeleteThumbnail = self.thumbnailFileManager.deleteFileWithName(imageName, error: error)
-        return didDeleteOriginal && didDeleteThumbnail
+        if self.ignoreThumbnail {
+            if didDeleteOriginal {
+                return
+            }
+            throw error
+        }
+        let didDeleteThumbnail: Bool
+        do {
+            try self.thumbnailFileManager.deleteFileWithName(imageName)
+            didDeleteThumbnail = true
+        } catch var error1 as NSError {
+            error = error1
+            didDeleteThumbnail = false
+        }
+        if didDeleteOriginal && didDeleteThumbnail {
+            return
+        }
+        throw error
     }
     
-    public func renameImageFromImageName(imageName:String, toNewImageName newName:String, error:NSErrorPointer) -> Bool {
-        let didRenameOriginal = self.fileManager.renameFileFrom(imageName, toNewFileName: newName, error: error)
+    public func renameImageFromImageName(imageName:String, toNewImageName newName:String) throws {
+        var error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+        let didRenameOriginal: Bool
+        do {
+            try self.fileManager.renameFileFrom(imageName, toNewFileName: newName)
+            didRenameOriginal = true
+        } catch var error1 as NSError {
+            error = error1
+            didRenameOriginal = false
+        }
         if self.ignoreThumbnail {
-            return didRenameOriginal
+            if didRenameOriginal {
+                return
+            }
+            throw error
         }
         
-        let didRenameThumbnail = self.thumbnailFileManager.renameFileFrom(imageName, toNewFileName: newName, error: error)
-        return didRenameOriginal && didRenameThumbnail
+        let didRenameThumbnail: Bool
+        do {
+            try self.thumbnailFileManager.renameFileFrom(imageName, toNewFileName: newName)
+            didRenameThumbnail = true
+        } catch var error1 as NSError {
+            error = error1
+            didRenameThumbnail = false
+        }
+        if didRenameOriginal && didRenameThumbnail {
+            return
+        }
+        throw error
     }
     
     private func nameFromTimestamp() -> String{
         let timestamp = NSString(format: "%f", NSDate().timeIntervalSince1970 * 1000000)
         
-        var fileName = timestamp.componentsSeparatedByString(".")[0] as! String
+        var fileName = timestamp.componentsSeparatedByString(".")[0] 
         fileName = fileName.stringByAppendingPathExtension("jpg")!
         return fileName
     }

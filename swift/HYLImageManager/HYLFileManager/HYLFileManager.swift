@@ -33,7 +33,7 @@ public class HYLFileManager: NSObject {
         if fileName.isEmpty {
             return nil
         }
-        let filePath = buildPathInSystemDirectory(NSSearchPathForDirectoriesInDomains(self.directory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String)
+        let filePath = buildPathInSystemDirectory(NSSearchPathForDirectoriesInDomains(self.directory, NSSearchPathDomainMask.UserDomainMask, true)[0] )
         return filePath.stringByAppendingPathComponent(fileName)
     }
     
@@ -51,23 +51,27 @@ public class HYLFileManager: NSObject {
         }
     }
     
-    public func deleteFileWithName(fileName:String, error:NSErrorPointer) -> Bool{
+    public func deleteFileWithName(fileName:String) throws{
+        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         if let path = pathForFileName(fileName) {
             if !NSFileManager.defaultManager().fileExistsAtPath(path) {
-                return true
+                return
             }
             
-            return NSFileManager.defaultManager().removeItemAtPath(path, error: error)
+            try NSFileManager.defaultManager().removeItemAtPath(path)
+            return
         }
-        return false
+        throw error
     }
     
-    public func renameFileFrom(oldName:String, toNewFileName newName:String, error:NSErrorPointer) -> Bool{
+    public func renameFileFrom(oldName:String, toNewFileName newName:String) throws{
+        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         if let oldPath = pathForFileName(oldName), newPath = pathForFileName(newName) {
             validateDirectoryPath(newPath.stringByDeletingLastPathComponent)
-            return NSFileManager.defaultManager().moveItemAtPath(oldPath, toPath: newPath, error: error)
+            try NSFileManager.defaultManager().moveItemAtPath(oldPath, toPath: newPath)
+            return
         }
-        return false
+        throw error
     }
     
     public func fileExistsForFileName(fileName:String) -> Bool {
@@ -95,8 +99,11 @@ public class HYLFileManager: NSObject {
         }
         
         var error:NSError?
-        if !NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: &error) {
-            println("Create directory for HYLFileManager failed with error: \(error!.localizedDescription)")
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        } catch let error1 as NSError {
+            error = error1
+            print("Create directory for HYLFileManager failed with error: \(error!.localizedDescription)")
         }
     }
 }
